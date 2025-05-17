@@ -27,12 +27,15 @@ class VerticalProduct extends StatelessWidget {
       height: 250,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
+                Container(
+                  alignment: Alignment.center,
+                  height: 120,
                   padding: const EdgeInsets.all(10),
                   child: Image.asset(assetImage),
                 ),
