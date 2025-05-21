@@ -1,6 +1,9 @@
 import 'package:exercise_1/features/shop/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'features/shop/screens/account.dart';
+import 'features/shop/screens/cart.dart';
+import 'features/shop/screens/favourites.dart';
 import 'features/shop/screens/search.dart';
 
 class NavigationMenu extends StatefulWidget {
@@ -12,7 +15,13 @@ class NavigationMenu extends StatefulWidget {
 
 class _NavigationMenuState extends State<NavigationMenu> {
   var _current = 0;
-  final screens = [HomeScreen(), SearchScreen()];
+  final screens = [
+    HomeScreen(),
+    SearchScreen(),
+    CartScreen(),
+    FavouritesScreen(),
+    AccountScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +42,19 @@ class _NavigationMenuState extends State<NavigationMenu> {
             label: 'Explore',
             selectedIcon: Icon(Iconsax.search_status, color: Colors.green),
           ),
-          NavigationDestination(icon: Icon(Icons.info), label: 'Information'),
-          NavigationDestination(icon: Icon(Icons.info), label: 'Information'),
+          NavigationDestination(
+            icon: Icon(Icons.shopping_cart_checkout),
+            label: 'Cart',
+          ),
+          NavigationDestination(
+            icon: Icon(Iconsax.heart_tick),
+            label: 'Favourites',
+          ),
+          NavigationDestination(
+            icon: Icon(Iconsax.user),
+            label: 'Account',
+            selectedIcon: Icon(Iconsax.user, color: Colors.green),
+          ),
         ],
       ),
       body: screens[_current],
