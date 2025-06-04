@@ -77,18 +77,10 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     SizedBox(height: 20),
 
-                    EmailTextField(controller: controller, checkEmail: (value) {
-                      setState(() {
-                        checkMail = value;
-                      });
-                    },),
+                    EmailTextField(controller: controller),
                     SizedBox(height: 20),
 
-                    PasswordTextField(controller: controller, checkPassword: (value) {
-                      setState(() {
-                        checkPass = value;
-                      });
-                    },),
+                    PasswordTextField(controller: controller),
                     SizedBox(height: 20),
 
                     RichText(text: TextSpan(

@@ -27,4 +27,12 @@ class Validation {
     }
     return null;
   }
+
+  static String? validateEmptyValue(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'This field cannot be empty';
+    }
+
+    return null;
+  }
 }
