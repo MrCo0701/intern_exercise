@@ -38,6 +38,7 @@ class PasswordTextField extends StatelessWidget {
                 },
                 icon: state.hidePassword ? Icon(Iconsax.eye_slash) : Icon(Iconsax.eye),
               ),
+              errorText: state.checkPass ? null : 'Password is invalid',
             ),
             validator: (value) => Validation.validatePassword(value),
             onChanged: (value) => context.read<LoginCubit>().checkPassword(value),
