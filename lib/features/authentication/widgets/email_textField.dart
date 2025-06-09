@@ -36,7 +36,7 @@ class EmailTextField extends StatelessWidget {
                   state.checkMail
                       ? Icon(Iconsax.tick_circle5, color: Colors.green)
                       : null,
-              errorText: state.checkPass ? null : 'Email is invalid',
+              errorText: state.checkMail ? null : 'Email is invalid',
             ),
             validator: (value) => Validation.validateEmail(value),
             onChanged: (value) => context.read<LoginCubit>().checkEmail(value),

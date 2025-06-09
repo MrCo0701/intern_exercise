@@ -72,7 +72,7 @@ class LoginScreen extends StatelessWidget {
                           return ButtonCustom(
                             title: 'Login',
                             onPressed: () => controller.login(context),
-                            canClick: state.checkMail,
+                            canClick: state.checkAll,
                             // checkLogin: true,
                           );
                         },

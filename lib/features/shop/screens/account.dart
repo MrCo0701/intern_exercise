@@ -1,6 +1,8 @@
+import 'package:exercise_1/features/shop/cubit/product_cubit.dart';
 import 'package:exercise_1/features/shop/widgets/option_setting.dart';
 import 'package:exercise_1/widgets/line.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -58,20 +60,46 @@ class AccountScreen extends StatelessWidget {
             // * Settings
             Column(
               children: [
-                OptionSetting(icon: Iconsax.bag, title: 'Orders'),
-                OptionSetting(icon: Iconsax.profile_2user, title: 'My Details'),
+                OptionSetting(
+                  icon: Iconsax.bag,
+                  title: 'Orders',
+                  onPressed: () {},
+                ),
+                OptionSetting(
+                  icon: Iconsax.profile_2user,
+                  title: 'My Details',
+                  onPressed: () {},
+                ),
                 OptionSetting(
                   icon: Iconsax.location,
                   title: 'Delivery Address',
+                  onPressed: () {},
                 ),
-                OptionSetting(icon: Iconsax.card, title: 'Payment Methods'),
-                OptionSetting(icon: Iconsax.ticket, title: 'Promo Cord'),
+                OptionSetting(
+                  icon: Iconsax.card,
+                  title: 'Payment Methods',
+                  onPressed: () {},
+                ),
+                OptionSetting(
+                  icon: Iconsax.ticket,
+                  title: 'Promo Cord',
+                  onPressed: () {},
+                ),
                 OptionSetting(
                   icon: Iconsax.notification,
                   title: 'Notifications ',
+                  onPressed: () {},
                 ),
-                OptionSetting(icon: Iconsax.message_question, title: 'Help '),
-                OptionSetting(icon: Iconsax.warning_2, title: 'About '),
+                OptionSetting(
+                  icon: Iconsax.message_question,
+                  title: 'Help ',
+                  onPressed: () {},
+                ),
+                OptionSetting(
+                  icon: Iconsax.warning_2,
+                  title: 'About ',
+                  onPressed: () {},
+                ),
                 LineCustom(),
               ],
             ),
@@ -83,7 +111,7 @@ class AccountScreen extends StatelessWidget {
               color: Colors.transparent,
               padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               child: ElevatedButton.icon(
-                icon: Icon(Icons.logout, size: 25,),
+                icon: Icon(Icons.logout, size: 25),
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
@@ -93,7 +121,14 @@ class AccountScreen extends StatelessWidget {
                   shadowColor: Colors.transparent,
                   iconColor: Colors.green,
                 ),
-                label: Text('Log Out', style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 17)),
+                label: Text(
+                  'Log Out',
+                  style: TextStyle(
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17,
+                  ),
+                ),
               ),
             ),
           ],

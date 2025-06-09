@@ -10,7 +10,7 @@ class LoginState {
     this.checkPass = false,
     this.checkUser = false,
     this.hidePassword = true,
-    this.checkAll = false,
+    this.checkAll = true,
   });
 
   LoginState copyWith({
