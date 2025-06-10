@@ -7,7 +7,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   CategoryCubit() : super(CategoryState(categories: [], onClickItem: false));
 
   void addCategoriesFromDummyData() {
-    emit(state.copyWith(categories: DummyData().Categories)); // ! should check this again
+    emit(state.copyWith(categories: DummyData().Categories));
   }
 
   void onClickItem() {
