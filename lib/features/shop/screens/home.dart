@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:exercise_1/features/shop/cubit/product_cubit.dart';
-import 'package:exercise_1/features/shop/cubit/product_state.dart';
+import 'package:exercise_1/features/shop/cubit/home/product_cubit.dart';
+import 'package:exercise_1/features/shop/cubit/home/product_state.dart';
 import 'package:exercise_1/features/shop/screens/detail.dart';
 import 'package:exercise_1/features/shop/widgets/search_bar.dart';
 import 'package:exercise_1/features/shop/widgets/title.dart';

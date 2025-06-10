@@ -1,4 +1,4 @@
-import 'package:exercise_1/features/shop/cubit/detail_state.dart';
+import 'package:exercise_1/features/shop/cubit/detail/detail_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailCubit extends Cubit<DetailState> {

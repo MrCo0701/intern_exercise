@@ -1,4 +1,4 @@
-import 'package:exercise_1/features/shop/cubit/product_cubit.dart';
+import 'package:exercise_1/features/shop/cubit/home/product_cubit.dart';
 import 'package:exercise_1/features/shop/widgets/option_setting.dart';
 import 'package:exercise_1/widgets/line.dart';
 import 'package:flutter/material.dart';
