@@ -1,9 +1,9 @@
 import 'dart:ui';
 
-import 'package:exercise_1/features/shop/cubit/category/category_cubit.dart';
-import 'package:exercise_1/features/shop/cubit/category/category_state.dart';
-import 'package:exercise_1/features/shop/widgets/search_bar.dart';
-import 'package:exercise_1/features/shop/widgets/type_product_vertical.dart';
+import 'package:exercise_1/features/shop/categories/cubit/category_cubit.dart';
+import 'package:exercise_1/features/shop/categories/cubit/category_state.dart';
+import 'package:exercise_1/widgets/search_bar.dart';
+import 'package:exercise_1/features/shop/categories/widgets/type_product_vertical.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

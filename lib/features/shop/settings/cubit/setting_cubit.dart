@@ -1,4 +1,4 @@
-import 'package:exercise_1/features/shop/cubit/setting/setting_state.dart';
+import 'package:exercise_1/features/shop/settings/cubit/setting_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SettingCubit extends Cubit<SettingState> {

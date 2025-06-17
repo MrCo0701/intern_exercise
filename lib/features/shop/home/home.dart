@@ -1,13 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:exercise_1/features/shop/cubit/home/product_cubit.dart';
-import 'package:exercise_1/features/shop/cubit/home/product_state.dart';
-import 'package:exercise_1/features/shop/screens/detail.dart';
-import 'package:exercise_1/features/shop/widgets/search_bar.dart';
-import 'package:exercise_1/features/shop/widgets/title.dart';
-import 'package:exercise_1/features/shop/widgets/type_product_horizontal.dart';
-import 'package:exercise_1/features/shop/widgets/vertical_product.dart';
+import 'package:exercise_1/features/shop/home/cubit/product_cubit.dart';
+import 'package:exercise_1/features/shop/details/detail.dart';
+import 'package:exercise_1/widgets/search_bar.dart';
+import 'package:exercise_1/features/shop/home/widget/title.dart';
+import 'package:exercise_1/features/shop/categories/widgets/type_product_horizontal.dart';
+import 'package:exercise_1/features/shop/home/widget/vertical_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'cubit/product_state.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

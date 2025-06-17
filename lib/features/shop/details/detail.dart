@@ -1,13 +1,13 @@
 import 'package:exercise_1/controller/check_controller.dart';
 import 'package:exercise_1/data/model/product_model.dart';
-import 'package:exercise_1/features/shop/cubit/detail/detail_state.dart';
 import 'package:exercise_1/widgets/button_custom.dart';
 import 'package:exercise_1/widgets/line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../cubit/detail/detail_cubit.dart';
+import 'cubit/detail_cubit.dart';
+import 'cubit/detail_state.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key, required this.product});

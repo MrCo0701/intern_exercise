@@ -1,6 +1,6 @@
 import 'package:exercise_1/data/dummy_data/duumy_data.dart';
 import 'package:exercise_1/data/model/product_model.dart';
-import 'package:exercise_1/features/shop/cubit/home/product_state.dart';
+import 'package:exercise_1/features/shop/home/cubit/product_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductCubit extends Cubit<ProductState> {

@@ -1,12 +1,12 @@
-import 'package:exercise_1/features/shop/cubit/home/product_cubit.dart';
-import 'package:exercise_1/features/shop/screens/home.dart';
+import 'package:exercise_1/features/shop/home/cubit/product_cubit.dart';
+import 'package:exercise_1/features/shop/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
-import 'features/shop/screens/account.dart';
-import 'features/shop/screens/cart.dart';
+import 'features/shop/settings/account.dart';
+import 'features/shop/cart/cart.dart';
 import 'features/shop/screens/favourites.dart';
-import 'features/shop/screens/search.dart';
+import 'features/shop/categories/search.dart';
 
 class NavigationMenu extends StatefulWidget {
   const NavigationMenu({super.key});

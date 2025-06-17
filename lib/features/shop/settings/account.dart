@@ -1,14 +1,14 @@
 import 'package:exercise_1/features/authentication/screens/login.dart';
-import 'package:exercise_1/features/shop/cubit/home/product_cubit.dart';
-import 'package:exercise_1/features/shop/cubit/setting/setting_state.dart';
-import 'package:exercise_1/features/shop/widgets/option_setting.dart';
+import 'package:exercise_1/features/shop/home/cubit/product_cubit.dart';
+import 'package:exercise_1/features/shop/settings/cubit/setting_state.dart';
+import 'package:exercise_1/features/shop/settings/widgets/option_setting.dart';
 import 'package:exercise_1/widgets/dialog_custom.dart';
 import 'package:exercise_1/widgets/line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../cubit/setting/setting_cubit.dart';
+import 'cubit/setting_cubit.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
