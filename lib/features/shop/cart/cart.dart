@@ -2,7 +2,6 @@ import 'package:exercise_1/features/shop/cart/cubit/cart_cubit.dart';
 import 'package:exercise_1/features/shop/cart/cubit/cart_state.dart';
 import 'package:exercise_1/features/shop/cart/widgets/drop_down_item.dart';
 import 'package:exercise_1/features/shop/cart/widgets/drop_down_title.dart';
-import 'package:exercise_1/features/shop/cart/widgets/item_in_cart.dart';
 import 'package:exercise_1/features/shop/cart/widgets/list_item_in_cart.dart';
 import 'package:exercise_1/features/shop/categories/cubit/category_cubit.dart';
 import 'package:exercise_1/features/shop/cart/widgets/information_cart.dart';
@@ -12,7 +11,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/line.dart';
 import '../categories/cubit/category_state.dart';
 import '../home/cubit/product_cubit.dart';
-import '../home/cubit/product_state.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -21,7 +19,6 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => CartCubit()),
         BlocProvider(create: (context) => CategoryCubit()..addCategoriesFromDummyData()),
         BlocProvider(create: (context) => ProductCubit()..addAllProducts()),
       ],

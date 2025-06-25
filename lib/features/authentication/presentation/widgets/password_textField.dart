@@ -1,14 +1,14 @@
 import 'package:exercise_1/controller/check_controller.dart';
+import 'package:exercise_1/validator/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../validator/validation.dart';
 import '../cubit/login_cubit.dart';
 import '../cubit/login_state.dart';
 
-class EmailTextField extends StatelessWidget {
-  const EmailTextField({
+class PasswordTextField extends StatelessWidget {
+  const PasswordTextField({
     super.key,
     required this.controller,
   });
@@ -22,9 +22,10 @@ class EmailTextField extends StatelessWidget {
       child: BlocBuilder<LoginCubit, LoginState>(
         builder: (context, state) {
           return TextFormField(
-            controller: controller.emailController,
+            controller: controller.passwordController,
+            obscureText: state.hidePassword,
             decoration: InputDecoration(
-              labelText: 'Email',
+              labelText: 'Password',
               labelStyle: TextStyle(color: Colors.black),
               focusedBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.grey, width: 2),
@@ -32,16 +33,18 @@ class EmailTextField extends StatelessWidget {
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.black26),
               ),
-              suffixIcon:
-                  state.checkMail
-                      ? Icon(Iconsax.tick_circle5, color: Colors.green)
-                      : null,
-              errorText: state.checkMail ? null : 'Email is invalid',
+              suffixIcon: IconButton(
+                onPressed: () {
+                  context.read<LoginCubit>().hidePassword();
+                },
+                icon: state.hidePassword ? Icon(Iconsax.eye_slash) : Icon(Iconsax.eye),
+              ),
+              // errorText: state.checkPass ? null : 'Password is invalid',
             ),
-            validator: (value) => Validation.validateEmail(value),
-            onChanged: (value) => context.read<LoginCubit>().checkEmail(value),
+            validator: (value) => Validation.validatePassword(value),
+            // onChanged: (value) => context.read<LoginCubit>().checkPassword(value),
           );
-        },
+        }
       ),
     );
   }

@@ -6,22 +6,25 @@ import '../navigation_menu.dart';
 class LoginController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final userController = TextEditingController();
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
   final loginFormKey = GlobalKey<FormState>();
 
-  void login(BuildContext context) {
-    if (loginFormKey.currentState!.validate()) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => FullScreenLoader()),
-      );
-
-      Future.delayed(Duration(seconds: 5), () {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => NavigationMenu()),
-          (Route<dynamic> route) => false,
-        );
-      });
-    }
-  }
+  // void login(BuildContext context) {
+  //   if (loginFormKey.currentState!.validate()) {
+  //     Navigator.push(
+  //       context,
+  //       MaterialPageRoute(builder: (context) => FullScreenLoader()),
+  //     );
+  //
+  //     Future.delayed(Duration(seconds: 5), () {
+  //       Navigator.pushAndRemoveUntil(
+  //         context,
+  //         MaterialPageRoute(builder: (context) => NavigationMenu()),
+  //         (Route<dynamic> route) => false,
+  //       );
+  //     });
+  //   }
+  // }
 }

@@ -1,15 +1,15 @@
 class Validation {
   static String? validateEmail(String? value) {
-    final emailPattern = RegExp(r'^[\w\.-]{2,}@gmail\.com$');
+    // final emailPattern = RegExp(r'^[\w\.-]{2,}@gmail\.com$');
 
-    if (value == null || value.isEmpty || !emailPattern.hasMatch(value)) {
-      return 'Please enter a valid email format';
+    if (value == null || value.isEmpty) {
+      return 'Please enter a valid email';
     }
 
     return null;
   }
 
-  static String? validatePassword(String? value) {
+  static String?  validatePassword(String? value) {
     if (value == null || value.isEmpty) {
       return null;
     }

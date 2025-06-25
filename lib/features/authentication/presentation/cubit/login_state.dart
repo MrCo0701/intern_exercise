@@ -4,6 +4,9 @@ class LoginState {
   final bool checkUser;
   final bool hidePassword;
   final bool checkAll;
+  final bool isLoginSuccess;
+  final bool isLoginFailed;
+  final bool isLoading;
 
   LoginState({
     this.checkMail = false,
@@ -11,6 +14,9 @@ class LoginState {
     this.checkUser = false,
     this.hidePassword = true,
     this.checkAll = true,
+    this.isLoginSuccess = false,
+    this.isLoginFailed = false,
+    this.isLoading = false
   });
 
   LoginState copyWith({
@@ -19,6 +25,9 @@ class LoginState {
     bool? checkUser,
     bool? hidePassword,
     bool? checkAll,
+    bool? isLoginSuccess,
+    bool? isLoading,
+    bool? isLoginFailed
   }) {
     return LoginState(
       checkMail: checkMail ?? this.checkMail,
@@ -26,6 +35,9 @@ class LoginState {
       checkUser: checkUser ?? this.checkUser,
       hidePassword: hidePassword ?? this.hidePassword,
       checkAll: checkAll ?? this.checkAll,
+      isLoading: isLoading ?? this.isLoading,
+      isLoginFailed: isLoginFailed ?? this.isLoginFailed,
+      isLoginSuccess: isLoginSuccess ?? this.isLoginSuccess
     );
   }
 }
