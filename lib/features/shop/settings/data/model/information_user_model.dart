@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'information_user.g.dart';
+part 'information_user_model.g.dart';
 
 @JsonSerializable()
 class InformationUser {
@@ -34,6 +34,6 @@ class UserInfo {
   UserInfo({required this.username, required this.email, required this.profilePic});
 
   factory UserInfo.fromJson(Map<String, dynamic> json) => _$UserInfoFromJson(json);
+
   Map<String, dynamic> toJson() => _$UserInfoToJson(this);
 }
-

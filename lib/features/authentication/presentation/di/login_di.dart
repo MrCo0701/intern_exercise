@@ -6,7 +6,7 @@ import '../../data/api/rest_client.dart';
 import '../../domain/usecase/login_usecase.dart';
 
 LoginCubit provideLoginCubit() {
-  final dio = Dio();
+  final dio = Dio(BaseOptions(baseUrl: 'https://us-central1-skin-scanner-3c419.cloudfunctions.net'));
   final client = RestClient(dio);
   final repo = AuthRepositoryImpl(client);
   final loginUseCase = LoginUseCase(repo);

@@ -1,8 +1,6 @@
-import 'package:dio/dio.dart';
-import 'package:exercise_1/features/authentication/data/api/rest_client.dart';
-import 'package:exercise_1/features/authentication/data/repository_impl/auth_repository_impl.dart';
 import 'package:exercise_1/features/authentication/presentation/cubit/cubit/signup_cubit.dart';
 import 'package:exercise_1/features/authentication/presentation/di/login_di.dart';
+import 'package:exercise_1/features/authentication/presentation/screens/login.dart';
 import 'package:exercise_1/features/authentication/presentation/widgets/normal_textField.dart';
 import 'package:exercise_1/navigation_menu.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +11,7 @@ import '../../../../widgets/button_custom.dart';
 import '../cubit/cubit/login_cubit.dart';
 import '../cubit/state/login_state.dart';
 import '../cubit/state/signup_state.dart';
+import '../di/signup_di.dart';
 import '../widgets/email_textField.dart';
 import '../widgets/password_textField.dart';
 
@@ -26,9 +25,7 @@ class SignupScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => provideLoginCubit()),
-
-        // ! Change here
-        BlocProvider(create: (context) => SignupCubit(AuthRepositoryImpl(RestClient(Dio())))),
+        BlocProvider(create: (context) => provideSignupCubit()),
       ],
       child: BlocConsumer<SignupCubit, SignupState>(
         listener: (context, state) {
@@ -36,7 +33,7 @@ class SignupScreen extends StatelessWidget {
             isRegisterSuccess:
                 () => Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => NavigationMenu()),
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
                   (Route<dynamic> route) => false,
                 ),
             isRegisterFail:

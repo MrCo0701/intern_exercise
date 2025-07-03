@@ -1,4 +1,4 @@
-import 'package:exercise_1/features/shop/settings/data/model/information_user.dart';
+import 'package:exercise_1/features/shop/settings/data/model/information_user_model.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 

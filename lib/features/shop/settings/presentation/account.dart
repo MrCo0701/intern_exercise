@@ -8,8 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../authentication/presentation/screens/login.dart';
-import 'cubit/setting_cubit.dart';
-import 'cubit/setting_state.dart';
+import 'cubit/cubit/setting_cubit.dart';
+import 'cubit/state/setting_state.dart';
+import 'di/account_di.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -17,7 +18,7 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SettingCubit()..updateUser(),
+      create: (context) => provideSettingCubit()..updateUser(),
       child: BlocConsumer<SettingCubit, SettingState>(
         listener: (context, state) {
           if (state.deleteSuccess) {

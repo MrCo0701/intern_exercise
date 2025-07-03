@@ -1,5 +1,3 @@
-import 'package:exercise_1/features/authentication/data/model/user_model.dart';
-
 import '../entity/user.dart';
 
 abstract class AuthRepository {
