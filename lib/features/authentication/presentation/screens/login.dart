@@ -1,4 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:exercise_1/data/storage%20/login_storage.dart';
+import 'package:exercise_1/features/authentication/domain/usecase/login_usecase.dart';
+import 'package:exercise_1/features/authentication/presentation/di/login_di.dart';
 import 'package:exercise_1/features/authentication/presentation/screens/signup.dart';
 import 'package:exercise_1/utils/loader/full_screen_loader.dart';
 import 'package:exercise_1/widgets/snack_bar.dart';
@@ -8,8 +11,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../controller/check_controller.dart';
 import '../../../../navigation_menu.dart';
 import '../../../../widgets/button_custom.dart';
-import '../cubit/login_cubit.dart';
-import '../cubit/login_state.dart';
+import '../../data/api/rest_client.dart';
+import '../../data/repository_impl/auth_repository_impl.dart';
+import '../../domain/repository/auth_repository.dart';
+import '../cubit/cubit/login_cubit.dart';
+import '../cubit/state/login_state.dart';
 import '../widgets/email_textField.dart';
 import '../widgets/password_textField.dart';
 
@@ -21,7 +27,7 @@ class LoginScreen extends StatelessWidget {
     final controller = LoginController();
 
     return BlocProvider(
-      create: (context) => LoginCubit(),
+      create: (context) => provideLoginCubit(),
       child: Scaffold(
         appBar: AppBar(),
         body: Padding(
@@ -30,10 +36,7 @@ class LoginScreen extends StatelessWidget {
             child: BlocConsumer<LoginCubit, LoginState>(
               listener: (context, state) {
                 if (state.isLoading) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => FullScreenLoader()),
-                  );
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => FullScreenLoader()));
                 } else if (state.isLoginSuccess) {
                   Navigator.pushAndRemoveUntil(
                     context,
@@ -41,9 +44,8 @@ class LoginScreen extends StatelessWidget {
                     (Route<dynamic> route) => false,
                   );
                 } else if (state.isLoginFailed) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBarCustom('Error to login!!!', Colors.red)
-                  );
+                  Navigator.pop(context);
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBarCustom('Error to login!!!', Colors.red));
                 }
               },
               builder: (context, state) {

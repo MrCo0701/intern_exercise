@@ -1,12 +1,9 @@
 import 'package:exercise_1/data/model/product_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class CartModel {
-  final ProductModel product;
-  late final int quantity;
+part 'cart_model.freezed.dart';
 
-  CartModel({required this.product, required this.quantity});
-
-    CartModel copyWith({ProductModel? product, int? quantity}) {
-    return CartModel(product: product ?? this.product, quantity: quantity ?? this.quantity);
-  }
+@freezed
+class CartModel with _$CartModel {
+  const factory CartModel({required ProductModel product, required int quantity}) = _CartModel;
 }

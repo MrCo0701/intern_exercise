@@ -1,11 +1,12 @@
 import 'package:exercise_1/controller/check_controller.dart';
+import 'package:exercise_1/features/authentication/presentation/di/login_di.dart';
 import 'package:exercise_1/validator/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../cubit/login_cubit.dart';
-import '../cubit/login_state.dart';
+import '../cubit/cubit/login_cubit.dart';
+import '../cubit/state/login_state.dart';
 
 class PasswordTextField extends StatelessWidget {
   const PasswordTextField({
@@ -18,7 +19,7 @@ class PasswordTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginCubit(),
+      create: (context) => provideLoginCubit(),
       child: BlocBuilder<LoginCubit, LoginState>(
         builder: (context, state) {
           return TextFormField(

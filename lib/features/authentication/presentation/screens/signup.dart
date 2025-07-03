@@ -1,5 +1,8 @@
-import 'package:exercise_1/features/authentication/data/repository/auth_respository.dart';
-import 'package:exercise_1/features/authentication/presentation/cubit/signup_cubit.dart';
+import 'package:dio/dio.dart';
+import 'package:exercise_1/features/authentication/data/api/rest_client.dart';
+import 'package:exercise_1/features/authentication/data/repository_impl/auth_repository_impl.dart';
+import 'package:exercise_1/features/authentication/presentation/cubit/cubit/signup_cubit.dart';
+import 'package:exercise_1/features/authentication/presentation/di/login_di.dart';
 import 'package:exercise_1/features/authentication/presentation/widgets/normal_textField.dart';
 import 'package:exercise_1/navigation_menu.dart';
 import 'package:flutter/material.dart';
@@ -7,9 +10,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../controller/check_controller.dart';
 import '../../../../widgets/button_custom.dart';
-import '../cubit/login_cubit.dart';
-import '../cubit/login_state.dart';
-import '../cubit/signup_state.dart';
+import '../cubit/cubit/login_cubit.dart';
+import '../cubit/state/login_state.dart';
+import '../cubit/state/signup_state.dart';
 import '../widgets/email_textField.dart';
 import '../widgets/password_textField.dart';
 
@@ -22,32 +25,35 @@ class SignupScreen extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => LoginCubit()),
-        BlocProvider(create: (context) => SignupCubit(AuthRepository())),
+        BlocProvider(create: (context) => provideLoginCubit()),
+
+        // ! Change here
+        BlocProvider(create: (context) => SignupCubit(AuthRepositoryImpl(RestClient(Dio())))),
       ],
       child: BlocConsumer<SignupCubit, SignupState>(
         listener: (context, state) {
-          if (state.isRegisterSuccess) {
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => NavigationMenu()),
-              (Route<dynamic> route) => false,
-            );
-          } else if (state.isRegisterFail) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                padding: EdgeInsets.all(20),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                content: Text(
-                  'Error to signup !!!',
-                  style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+          state.whenOrNull(
+            isRegisterSuccess:
+                () => Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => NavigationMenu()),
+                  (Route<dynamic> route) => false,
                 ),
-                duration: Duration(seconds: 2),
-                behavior: SnackBarBehavior.floating,
-                backgroundColor: Colors.red,
-              ),
-            );
-          }
+            isRegisterFail:
+                (error) => ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    padding: EdgeInsets.all(20),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    content: Text(
+                      error,
+                      style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    duration: Duration(seconds: 2),
+                    behavior: SnackBarBehavior.floating,
+                    backgroundColor: Colors.red,
+                  ),
+                ),
+          );
         },
         builder: (context, stateSignup) {
           return Scaffold(

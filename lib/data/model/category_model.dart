@@ -1,50 +1,17 @@
 import 'dart:ui';
 
-import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class CategoryModel {
-  final String id;
-  final String imageUrl;
-  final String title;
-  final Color backgroundColor;
-  final Color borderColor;
-  final String description;
+part 'category_model.freezed.dart';
 
-  CategoryModel({
-    required this.id,
-    required this.imageUrl,
-    required this.title,
-    required this.backgroundColor,
-    required this.borderColor,
-    required this.description,
-  });
-
-  CategoryModel copyWith({
-    String? id,
-    String? imageUrl,
-    String? title,
-    Color? backgroundColor,
-    Color? borderColor,
-    String? description,
-  }) {
-    return CategoryModel(
-      id: id ?? this.id,
-      imageUrl: imageUrl ?? this.imageUrl,
-      title: title ?? this.title,
-      backgroundColor: backgroundColor ?? this.backgroundColor,
-      borderColor: borderColor ?? this.borderColor,
-      description: description ?? this.description,
-    );
-  }
-
-  CategoryModel isEmpty() {
-    return CategoryModel(
-      id: '',
-      imageUrl: '',
-      title: '',
-      backgroundColor: Colors.grey,
-      borderColor: Colors.grey,
-      description: '',
-    );
-  }
+@freezed
+class CategoryModel with _$CategoryModel {
+  const factory CategoryModel({
+    required String id,
+    required String imageUrl,
+    required String title,
+    required Color backgroundColor,
+    required Color borderColor,
+    required String description,
+  }) = _CategoryModel;
 }

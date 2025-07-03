@@ -1,13 +1,14 @@
 import 'package:exercise_1/controller/check_controller.dart';
 import 'package:exercise_1/features/authentication/data/model/user_model.dart';
-import 'package:exercise_1/features/authentication/data/repository/auth_respository.dart';
-import 'package:exercise_1/features/authentication/presentation/cubit/signup_state.dart';
+import 'package:exercise_1/features/authentication/data/repository_impl/auth_repository_impl.dart';
+import 'package:exercise_1/features/authentication/presentation/cubit/state/signup_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignupCubit extends Cubit<SignupState> {
-  final AuthRepository authRepository;
+  // ! change repo in here
+  final AuthRepositoryImpl authRepository;
 
-  SignupCubit(this.authRepository) : super(SignupState());
+  SignupCubit(this.authRepository) : super(SignupState.initial());
 
   Future<void> registerUser({
     required String username,
@@ -17,7 +18,7 @@ class SignupCubit extends Cubit<SignupState> {
     required String lastName,
   }) async {
     if (LoginController().loginFormKey.currentState!.validate()) {
-      emit(state.copyWith(isRegisterLoading: true));
+      emit(SignupState.isRegisterLoading());
 
       final user = UserModel(
         email: email,
@@ -31,12 +32,12 @@ class SignupCubit extends Cubit<SignupState> {
         final register = await authRepository.registerUser(user: user);
 
         if (register) {
-          emit(state.copyWith(isRegisterLoading: false, isRegisterSuccess: true));
+          emit(SignupState.isRegisterSuccess());
         } else {
-          emit(state.copyWith(isRegisterLoading: false, isRegisterFail: true));
+          emit(SignupState.isRegisterFail('Error to register'));
         }
       } catch (e) {
-        emit(state.copyWith(isRegisterLoading: false, isRegisterFail: true));
+        emit(SignupState.isRegisterFail('Error to register'));
         throw ('Error:::::::::::::::::::: $e');
       }
     }

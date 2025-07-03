@@ -1,17 +1,13 @@
-class SettingState {
-  final String userName;
-  final String email;
-  final String avatar;
-  final bool deleteSuccess;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  SettingState({required this.userName, required this.email, required this.avatar, this.deleteSuccess = false});
+part 'setting_state.freezed.dart';
 
-  SettingState copyWith({String? userName, String? email, String? avatar, bool? deleteSuccess}) {
-    return SettingState(
-      userName: userName ?? this.userName,
-      email: email ?? this.email,
-      avatar: avatar ?? this.avatar,
-      deleteSuccess: deleteSuccess ?? this.deleteSuccess,
-    );
-  }
+@freezed
+class SettingState with _$SettingState {
+  const factory SettingState({
+    required String userName,
+    required String email,
+    required String avatar,
+    @Default(false) bool deleteSuccess,
+  }) = _SettingState;
 }

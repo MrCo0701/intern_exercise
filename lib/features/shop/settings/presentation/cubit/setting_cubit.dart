@@ -7,7 +7,13 @@ class SettingCubit extends Cubit<SettingState> {
 
   Future<void> updateUser() async {
     final user = await UserRepository().getUser();
-    emit(state.copyWith(userName: user.userName, email: user.email, avatar: user.imageUrl));
+    emit(
+      state.copyWith(
+        userName: user.data.userInfo.username,
+        email: user.data.userInfo.email,
+        avatar: user.data.userInfo.profilePic,
+      ),
+    );
   }
 
   Future<void> deleteUser() async {

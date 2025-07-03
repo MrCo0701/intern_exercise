@@ -1,13 +1,13 @@
-import 'package:exercise_1/controller/check_controller.dart';
+import 'package:exercise_1/features/authentication/domain/usecase/login_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 
-import '../../../../validator/validation.dart';
-import '../../data/repository/auth_respository.dart';
-import 'login_state.dart';
+import '../../../../../validator/validation.dart';
+import '../state/login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit() : super(LoginState());
+  final LoginUseCase loginUseCase;
+
+  LoginCubit(this.loginUseCase) : super(LoginState());
 
   void checkEmail(String email) {
     final isValid = Validation.validateEmail(email) == null;
@@ -51,7 +51,7 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> login({required String email, required String password}) async {
     try {
       emit(state.copyWith(isLoading: true, isLoginSuccess: false, isLoginFailed: false));
-      final isValid = await AuthRepository().loginUser(email: email, password: password);
+      final isValid = await loginUseCase(email, password);
 
       if (isValid) {
         emit(state.copyWith(isLoginSuccess: true, isLoading: false));
