@@ -1,5 +1,4 @@
-import 'package:exercise_1/features/shop/screens/detail.dart';
-import 'package:exercise_1/features/shop/screens/home.dart';
+import 'package:exercise_1/utils/loader/full_screen_loader.dart';
 import 'package:flutter/material.dart';
 
 import '../navigation_menu.dart';
@@ -7,11 +6,25 @@ import '../navigation_menu.dart';
 class LoginController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final userController = TextEditingController();
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
   final loginFormKey = GlobalKey<FormState>();
 
-  void login (BuildContext context) {
-    if (loginFormKey.currentState!.validate()) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => NavigationMenu()));
-    }
-  }
+  // void login(BuildContext context) {
+  //   if (loginFormKey.currentState!.validate()) {
+  //     Navigator.push(
+  //       context,
+  //       MaterialPageRoute(builder: (context) => FullScreenLoader()),
+  //     );
+  //
+  //     Future.delayed(Duration(seconds: 5), () {
+  //       Navigator.pushAndRemoveUntil(
+  //         context,
+  //         MaterialPageRoute(builder: (context) => NavigationMenu()),
+  //         (Route<dynamic> route) => false,
+  //       );
+  //     });
+  //   }
+  // }
 }

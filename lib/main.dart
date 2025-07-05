@@ -1,5 +1,6 @@
-import 'package:exercise_1/features/authentication/screens/login.dart';
 import 'package:flutter/material.dart';
+
+import 'features/authentication/presentation/screens/login.dart';
 
 void main() {
   runApp(const MyApp());
